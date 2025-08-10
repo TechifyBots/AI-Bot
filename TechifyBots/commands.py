@@ -1,5 +1,5 @@
 from pyrogram import Client, filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from pyrogram.types import *
 import requests
 import random
 from config import *
@@ -8,6 +8,7 @@ import asyncio
 from .db import tb
 from .fsub import get_fsub
 from Script import text
+from .maintenance import get_maintenance
 
 genai.configure(api_key=GOOGLE_API_KEY)
 
@@ -54,6 +55,8 @@ async def group_ai_reply(client, message):
 
 @Client.on_message(filters.private & filters.text & ~filters.command(["start", "ask"]))
 async def handle_ai_query(client, message):
+    if await get_maintenance() and message.from_user.id != ADMIN:
+        return await message.reply_text("**🛠️ Bot is Under Maintenance**", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Support", user_id=int(ADMIN))]]))
     if IS_FSUB and not await get_fsub(client, message):return
     await handle_gemini_mode(client, message)
 
