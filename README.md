@@ -16,6 +16,7 @@
 - Broadcast available
 - Fsub available
 - Fully modified repo
+- Maintenance Mode
 - Deploy To Koyeb + Heroku + Railway.
 - [Developer support](https://telegram.me/TechifySupport) 24x7
 </details>
@@ -43,6 +44,7 @@
 ```
 start - Start The Bot
 ask - Ask anything to AI
+maintenance - Toggle maintenance mode
 broadcast - (admin only) Broadcast message to bot users
 stats - (admin only) check bots stats
 ```
