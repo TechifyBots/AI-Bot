@@ -55,13 +55,13 @@ async def group_ai_reply(client, message):
 
 @Client.on_message(filters.private & filters.text & ~filters.command(["start", "ask"]))
 async def handle_ai_query(client, message):
-    if await get_maintenance() and message.from_user.id != ADMIN:
-        await message.delete()
-        return await message.reply_text("**🛠️ Bot is Under Maintenance**", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("Support", user_id=int(ADMIN))]]))
     if IS_FSUB and not await get_fsub(client, message):return
     await handle_gemini_mode(client, message)
 
 async def handle_gemini_mode(client, message):
+    if await get_maintenance() and message.from_user.id != ADMIN:
+        await message.delete()
+        return await message.reply_text(f"<b>{message.from_user.mention},\n\nᴛʜɪꜱ ʙᴏᴛ ɪꜱ ᴄᴜʀʀᴇɴᴛʟʏ ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ.\n\n<blockquote>ᴄᴏɴᴛᴀᴄᴛ ᴏᴡɴᴇʀ ꜰᴏʀ ᴍᴏʀᴇ ɪɴꜰᴏ.</blockquote></b>", reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton("👨‍💻 ᴏᴡɴᴇʀ 👨‍💻", user_id=int(ADMIN))]]))
     user_input = message.text.strip()
     s = await message.reply_sticker("CAACAgQAAxkBAAIFqGc04PwJshM42NKq2lOFn-q5lQtqAAJuDwAC4eqxUNoxB5joJxGiHgQ")
     generation_config = {
