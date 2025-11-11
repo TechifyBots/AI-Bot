@@ -60,7 +60,7 @@ If you are facing any issue while using the bot even after entering the correct 
 
 ### 😇 [SUPPORT](https://techifybots.github.io/PayWeb)
 
-### 🥳 [DEVELOPER](https://instagram.com/TechifyRahul)
+### 🥳 [DEVELOPER](https://instagram.com/ImRahulDhankhar)
 
 ### 📌 NOTE
 
